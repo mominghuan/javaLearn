@@ -5,13 +5,13 @@ package com.mo.list;
  *
  */
 
-public class ArrayList implements List {
+public class MyArrayList implements MyList {
 	private final static int LENGTH=5;//如果不指定数组长度，默认为5
 	private Object[] list;//存放元素数组
 	private int size;//记录元素的个数 
 	//测试
 	public static void main(String[] args) {
-		ArrayList arrayList = new ArrayList();
+		MyArrayList arrayList = new MyArrayList();
 		arrayList.add(1);
 		arrayList.add(5);
 		arrayList.add(8);
@@ -20,7 +20,8 @@ public class ArrayList implements List {
 		arrayList.remove(1);
 		arrayList.add(1,6);
 		arrayList.add(1,5);
-		for (int i = 0; i < arrayList.size(); i++) {
+		arrayList.remove(1);
+		for (int i = 0; i < arrayList.getList().length; i++) {
 			System.out.println(arrayList.get(i));
 		}
 	}
@@ -77,10 +78,10 @@ public class ArrayList implements List {
 		checkIndex(index);
 		Object object = list[index];
 		//元素往前移动
-		for (int i = index; i < size; i++) {
+		for (int i = index; i < size-1; i++) {
 			list[i] = list[i+1];
 		}
-		size--;
+		list[--size] = null;
 		return object;
 	}
 
@@ -101,7 +102,7 @@ public class ArrayList implements List {
 
 	@Override
 	public Object get(int index) {
-		checkIndex(index);
+		//checkIndex(index);
 		return list[index];
 	}
 
@@ -111,7 +112,7 @@ public class ArrayList implements List {
 		list[index] = object;
 	}
 	//构造
-	public ArrayList(int length) {
+	public MyArrayList(int length) {
 		if(length < 0){
 			list = new Object[LENGTH];//LENGTH=5
 		}else {
@@ -119,7 +120,14 @@ public class ArrayList implements List {
 		}
 		this.size = 0;
 	}
-	public ArrayList() {
+	public MyArrayList() {
 		this(LENGTH);
 	}
+	public Object[] getList() {
+		return list;
+	}
+	public void setList(Object[] list) {
+		this.list = list;
+	}
+	
 }

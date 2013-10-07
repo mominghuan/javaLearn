@@ -4,7 +4,7 @@ package com.mo.list;
  * @author mo
  *
  */
-public interface List {
+public interface MyList {
 	/**
 	 * ÅĞ¶ÏÊÇ·ñÎª¿Õ
 	 * @return

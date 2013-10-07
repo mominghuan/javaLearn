@@ -7,15 +7,39 @@ package com.mo.Mathematics;
 public class ChoiceMathematics {
 	private static int[] list = {12,4,5,1,65,21,89,90,55,82,3};
 	public static void main(String[] args) {
-		sort(list,0);
+		sort3(list);
 		for (int i = 0; i < list.length; i++) {
 			System.out.println(list[i]);
 		}
 	}
+	//²åÈëÅÅÐò
+	public static void sort3(int[] list){
+		for (int i = 1; i < list.length; i++) {
+			int currentData = list[i];
+			int temp = i;
+			while(temp>0 && list[temp-1]>currentData){
+				list[temp] = list[temp-1];
+				temp--;
+			}
+			list[temp] = currentData;
+		}
+	}
+	
 	/**
-	 * Ë«ÖØÑ­»·
+	 * Ã°ÅÝÅÅÐò
 	 * @param list
 	 */
+	public static void sort2(int[] list){
+		for (int i = list.length-1; i > 0; i--) {
+			for (int j = 0; j < i; j++) {
+				if(list[j]>list[j+1]){
+					int temp = list[j];
+					list[j] = list[j+1];
+					list[j+1] = temp;
+				}
+			}
+		}
+	}
 	public static void sort(int[] list) {
 		for (int i = 0; i < list.length; i++) {
 			
